@@ -11,8 +11,8 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
-    //new MinifyPlugin(),
-    //new UglifyJSPlugin(),
+    new MinifyPlugin(),
+    new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
