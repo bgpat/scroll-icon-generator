@@ -54,10 +54,14 @@ module.exports = {
       },
       {
         loader: 'url-loader',
-        test: /\.(woff2?|ttf|eot|svg)(\?.*)?$/,
+        test: /\.(woff2?|ttf)(\?.*)?$/,
         options: {
           limit: 0x20000,
         },
+      },
+      {
+        loader: 'null-loader',
+        test: /\.(ttf|svg|eot)(\?.*)?$/,
       },
     ],
   },
