@@ -1,6 +1,11 @@
 <template>
   <div>
     <canvas ref="canvas" :width="width" :height="height"></canvas>
+    <v-snackbar v-model="snackbar" :timeout="30000">
+      Generated animation GIF
+      ({{ fileSize }})
+      <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -15,6 +20,8 @@
         scroll: null,
         prev: null,
         pause: false,
+        snackbar: false,
+        fileSize: '',
       };
     },
     computed: {
@@ -126,6 +133,14 @@
           this.pause = false;
           this.animate();
           window.open(URL.createObjectURL(blob), id);
+          if (blob.size > 1000000) {
+            this.fileSize = `${(blob.size / 1000000).toFixed(1)} MB`;
+          } else if (blob.size > 1000) {
+            this.fileSize = `${(blob.size / 1000).toFixed(1)} KB`;
+          } else {
+            this.fileSize = `${blob.size} B`;
+          }
+          this.snackbar = true;
         });
         gif.render();
       },
