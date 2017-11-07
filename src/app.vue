@@ -30,7 +30,7 @@
             </v-card-text>
           </v-card>
           <v-card>
-            <v-subheader>image</v-subheader>
+            <v-subheader>canvas</v-subheader>
             <v-card-text>
               <v-slider
                 prepend-icon="swap_horiz"
