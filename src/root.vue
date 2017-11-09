@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <v-tooltip top v-show="gif == null">
-      <canvas ref="canvas" slot="activator" :width="width" :height="height"></canvas>
+  <div class="imgbox" :style="`width:${width+2}px;height:${height+2}px`">
+    <v-tooltip top v-show="gif == null && !pause">
+      <canvas slot="activator" ref="canvas" :width="width" :height="height"></canvas>
       <span>HTML5 Canvas + JavaScript</span>
     </v-tooltip>
     <v-tooltip top v-if="gif">
-      <img :src="gifURL" slot="activator" />
+      <img slot="activator" :src="gifURL" :class="[pause]" />
       <span>Animation GIF</span>
     </v-tooltip>
+    <transition name="circular">
+      <v-progress-circular v-show="pause" class="circular" indeterminate color="primary"></v-progress-circular>
+    </transition>
   </div>
 </template>
 
@@ -149,13 +152,38 @@
 </script>
 
 <style scoped>
-  canvas, img {
+  .imgbox {
+    position: relative;
     border: 1px solid rgba(0, 0, 0, .5);
     background-color: #fff;
     background-size: 30px 30px;
     background-position: 0 0, 15px 15px;
     background-repeat: repeat;
     background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%);
-    display: block;
+  }
+
+  .circular {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .circular-enter-active {
+    transition: opacity .5s;
+  }
+
+  .circular-reave-active {
+    transition: opacity 3s;
+  }
+
+  .circular-enter, .circular-leave-to {
+    opacity: 0;
+  }
+
+  .pause {
+    opacity: .3;
   }
 </style>
