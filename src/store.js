@@ -62,11 +62,11 @@ export default new Vuex.Store({
       },
       mutations: {
         x(state, v) {
-          state.commit('gif');
+          this.commit('gif');
           state.x = v;
         },
         y(state, v) {
-          state.commit('gif');
+          this.commit('gif');
           state.y = v;
         },
       },
