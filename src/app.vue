@@ -190,6 +190,7 @@
           return this.$route.params.text;
         },
         set(v) {
+          this.gif = false;
           this.$router.push(`/${encodeURIComponent(v)}`);
         },
       },
