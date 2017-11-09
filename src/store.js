@@ -16,18 +16,23 @@ export default new Vuex.Store({
       },
       mutations: {
         family(state, v) {
+          this.commit('gif');
           state.family = v;
         },
         size(state, v) {
+          this.commit('gif');
           state.size = v;
         },
         weight(state, v) {
+          this.commit('gif');
           state.weight = v;
         },
         style(state, v) {
+          this.commit('gif');
           state.style = v;
         },
         color(state, v) {
+          this.commit('gif');
           state.color = v;
         },
       },
@@ -40,9 +45,11 @@ export default new Vuex.Store({
       },
       mutations: {
         width(state, v) {
+          this.commit('gif');
           state.width = v;
         },
         color(state, v) {
+          this.commit('gif');
           state.color = v;
         },
       },
@@ -55,15 +62,18 @@ export default new Vuex.Store({
       },
       mutations: {
         x(state, v) {
+          state.commit('gif');
           state.x = v;
         },
         y(state, v) {
+          state.commit('gif');
           state.y = v;
         },
       },
     },
   },
   state: {
+    gif: null,
     speed: 24,  // px/sec
     fps: 12,
     width: 32,
@@ -74,29 +84,44 @@ export default new Vuex.Store({
     canvas: null,
   },
   mutations: {
+    gif(state, v) {
+      state.gif = v;
+    },
     speed(state, v) {
+      this.commit('gif');
       state.speed = v;
     },
     fps(state, v) {
+      this.commit('gif');
       state.fps = v;
     },
     width(state, v) {
+      this.commit('gif');
       state.width = v;
     },
     height(state, v) {
+      this.commit('gif');
       state.height = v;
     },
     spacer(state, v) {
+      this.commit('gif');
       state.spacer = v;
     },
     background(state, v) {
+      this.commit('gif');
       state.background = v;
     },
     transparent(state, v) {
+      this.commit('gif');
       state.transparent = v;
     },
     canvas(state, v) {
       state.canvas = v;
+    },
+  },
+  actions: {
+    generateGIF(state) {
+      this.state.canvas.save();
     },
   },
 });

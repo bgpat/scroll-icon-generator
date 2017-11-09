@@ -1,11 +1,13 @@
 <template>
   <div>
-    <canvas ref="canvas" :width="width" :height="height"></canvas>
-    <v-snackbar v-model="snackbar" :timeout="30000">
-      Generated animation GIF
-      ({{ fileSize }})
-      <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
-    </v-snackbar>
+    <v-tooltip top v-show="gif == null">
+      <canvas ref="canvas" slot="activator" :width="width" :height="height"></canvas>
+      <span>HTML5 Canvas + JavaScript</span>
+    </v-tooltip>
+    <v-tooltip top v-if="gif">
+      <img :src="gifURL" slot="activator" />
+      <span>GIF animation</span>
+    </v-tooltip>
   </div>
 </template>
 
@@ -45,7 +47,11 @@
           `"${this.font.family}"`,
         ].join(' ');
       },
+      gifURL() {
+        return window.URL.createObjectURL(this.gif);
+      },
       ...mapState([
+        'gif',
         'speed',
         'fps',
         'width',
@@ -103,8 +109,6 @@
       },
       save() {
         this.pause = true;
-        let id = Math.random();
-        window.open('about:blank', id);
         let bg = parseInt(this.background.replace(/#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i, 'ff$3$2$1'), 16);
         let gif = new GIF({
           width: this.width,
@@ -132,15 +136,7 @@
         gif.on('finished', blob => {
           this.pause = false;
           this.animate();
-          window.open(URL.createObjectURL(blob), id);
-          if (blob.size > 1000000) {
-            this.fileSize = `${(blob.size / 1000000).toFixed(1)} MB`;
-          } else if (blob.size > 1000) {
-            this.fileSize = `${(blob.size / 1000).toFixed(1)} KB`;
-          } else {
-            this.fileSize = `${blob.size} B`;
-          }
-          this.snackbar = true;
+          this.$store.commit('gif', blob);
         });
         gif.render();
       },
@@ -153,12 +149,13 @@
 </script>
 
 <style scoped>
-  canvas {
+  canvas, img {
     border: 1px solid rgba(0, 0, 0, .5);
     background-color: #fff;
     background-size: 30px 30px;
     background-position: 0 0, 15px 15px;
     background-repeat: repeat;
     background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%);
+    display: block;
   }
 </style>

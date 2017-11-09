@@ -2,148 +2,152 @@
   <v-app>
     <main>
       <v-navigation-drawer persistent clipped app v-model="drawer">
-        <v-form>
-          <v-card>
-            <v-subheader>animation</v-subheader>
-            <v-card-text>
-              <v-slider
-                prepend-icon="tune"
-                v-model="speed"
-                hint="speed (px/sec)"
-                thumb-label
-                min="0"
-                :max="width * 5"
-              ></v-slider>
-              <v-slider
-                prepend-icon="filter"
-                v-model="fps"
-                hint="FPS"
-                thumb-label
-                min="1"
-                max="100"
-              ></v-slider>
-              <v-text-field
-                prepend-icon="space_bar"
-                v-model="spacer"
-                label="spacer"
+        <v-card>
+          <v-subheader>preview</v-subheader>
+          <v-card-text>
+            <v-switch :label="gif ? `GIF (${gifSize})` : 'canvas + JS'" v-model="gifMode"></v-switch>
+          </v-card-text>
+        </v-card>
+        <v-card>
+          <v-subheader>animation</v-subheader>
+          <v-card-text>
+            <v-slider
+              prepend-icon="tune"
+              v-model="speed"
+              hint="speed (px/sec)"
+              thumb-label
+              min="0"
+              :max="width * 5"
+            ></v-slider>
+            <v-slider
+              prepend-icon="filter"
+              v-model="fps"
+              hint="FPS"
+              thumb-label
+              min="1"
+              max="100"
+            ></v-slider>
+            <v-text-field
+              prepend-icon="space_bar"
+              v-model="spacer"
+              label="spacer"
+            ></v-text-field>
+          </v-card-text>
+        </v-card>
+        <v-card>
+          <v-subheader>canvas</v-subheader>
+          <v-card-text>
+            <v-slider
+              prepend-icon="swap_horiz"
+              v-model="width"
+              hint="width"
+              thumb-label
+              min="8"
+              max="1024"
+            ></v-slider>
+            <v-slider
+              prepend-icon="swap_vert"
+              v-model="height"
+              hint="height"
+              thumb-label
+              min="8"
+              max="1024"
+            ></v-slider>
+            <v-text-field
+              prepend-icon="format_color_fill"
+              v-model="background"
+              label="background color"
+              :style="{ color: background }"
               ></v-text-field>
-            </v-card-text>
-          </v-card>
-          <v-card>
-            <v-subheader>canvas</v-subheader>
-            <v-card-text>
-              <v-slider
-                prepend-icon="swap_horiz"
-                v-model="width"
-                hint="width"
-                thumb-label
-                min="8"
-                max="1024"
-              ></v-slider>
-              <v-slider
-                prepend-icon="swap_vert"
-                v-model="height"
-                hint="height"
-                thumb-label
-                min="8"
-                max="1024"
-              ></v-slider>
-              <v-text-field
-                prepend-icon="format_color_fill"
-                v-model="background"
-                label="background color"
-                :style="{ color: background }"
-                ></v-text-field>
-              <v-checkbox
-                prepend-icon="texture"
-                v-model="transparent"
-                label="transparent background"
-                color="primary"
-              ></v-checkbox>
-            </v-card-text>
-          </v-card>
-          <v-card>
-            <v-subheader>font</v-subheader>
-            <v-card-text>
-              <v-text-field
-                prepend-icon="font_download"
-                v-model="fontFamily"
+            <v-checkbox
+              prepend-icon="texture"
+              v-model="transparent"
+              label="transparent background"
+              color="primary"
+            ></v-checkbox>
+          </v-card-text>
+        </v-card>
+        <v-card>
+          <v-subheader>font</v-subheader>
+          <v-card-text>
+            <v-text-field
+              prepend-icon="font_download"
+              v-model="fontFamily"
+            ></v-text-field>
+            <v-slider
+              prepend-icon="format_size"
+              v-model="fontSize"
+              hint="size (px)"
+              thumb-label
+              min="4"
+              :max="height * 2"
+            ></v-slider>
+            <v-slider
+              prepend-icon="format_bold"
+              v-model="fontWeight"
+              hint="weight"
+              thumb-label
+              min="100"
+              max="900"
+              step="100"
+              snap
+            ></v-slider>
+            <v-select
+              prepend-icon="format_italic"
+              v-model="fontStyle"
+              hint="style"
+              :items="['normal', 'italic', 'oblique']"
+            ></v-select>
+            <v-text-field
+              prepend-icon="format_color_text"
+              v-model="fontColor"
+              label="text color"
+              :style="{ color: fontColor }"
               ></v-text-field>
-              <v-slider
-                prepend-icon="format_size"
-                v-model="fontSize"
-                hint="size (px)"
-                thumb-label
-                min="4"
-                :max="height * 2"
-              ></v-slider>
-              <v-slider
-                prepend-icon="format_bold"
-                v-model="fontWeight"
-                hint="weight"
-                thumb-label
-                min="100"
-                max="900"
-                step="100"
-                snap
-              ></v-slider>
-              <v-select
-                prepend-icon="format_italic"
-                v-model="fontStyle"
-                hint="style"
-                :items="['normal', 'italic', 'oblique']"
-              ></v-select>
-              <v-text-field
-                prepend-icon="format_color_text"
-                v-model="fontColor"
-                label="text color"
-                :style="{ color: fontColor }"
-                ></v-text-field>
-            </v-card-text>
-          </v-card>
-          <v-card>
-            <v-subheader>outline</v-subheader>
-            <v-card-text>
-              <v-slider
-                prepend-icon="format_bold"
-                v-model="outlineWidth"
-                hint="width"
-                thumb-label
-                min="0"
-                :max="fontSize"
-              ></v-slider>
-              <v-text-field
-                prepend-icon="format_color_text"
-                v-model="outlineColor"
-                label="color"
-                :style="{ color: outlineColor }"
-                ></v-text-field>
-            </v-card-text>
-          </v-card>
-          <v-card>
-            <v-subheader>position</v-subheader>
-            <v-card-text>
-              <v-slider
-                prepend-icon="arrow_back"
-                append-icon="arrow_forward"
-                v-model="xPosition"
-                hint="x offset (px)"
-                thumb-label
-                :min="-width"
-                :max="width"
-              ></v-slider>
-              <v-slider
-                prepend-icon="arrow_upward"
-                append-icon="arrow_downward"
-                v-model="yPosition"
-                hint="y offset (px)"
-                thumb-label
-                :min="-height"
-                :max="height"
-              ></v-slider>
-            </v-card-text>
-          </v-card>
-        </v-form>
+          </v-card-text>
+        </v-card>
+        <v-card>
+          <v-subheader>outline</v-subheader>
+          <v-card-text>
+            <v-slider
+              prepend-icon="format_bold"
+              v-model="outlineWidth"
+              hint="width"
+              thumb-label
+              min="0"
+              :max="fontSize"
+            ></v-slider>
+            <v-text-field
+              prepend-icon="format_color_text"
+              v-model="outlineColor"
+              label="color"
+              :style="{ color: outlineColor }"
+              ></v-text-field>
+          </v-card-text>
+        </v-card>
+        <v-card>
+          <v-subheader>position</v-subheader>
+          <v-card-text>
+            <v-slider
+              prepend-icon="arrow_back"
+              append-icon="arrow_forward"
+              v-model="xPosition"
+              hint="x offset (px)"
+              thumb-label
+              :min="-width"
+              :max="width"
+            ></v-slider>
+            <v-slider
+              prepend-icon="arrow_upward"
+              append-icon="arrow_downward"
+              v-model="yPosition"
+              hint="y offset (px)"
+              thumb-label
+              :min="-height"
+              :max="height"
+            ></v-slider>
+          </v-card-text>
+        </v-card>
       </v-navigation-drawer>
       <v-toolbar
         color="blue darken-3"
@@ -161,10 +165,6 @@
           prepend-icon="mode_edit"
           v-model="text"
         ></v-text-field>
-        <v-spacer></v-spacer>
-        <v-btn icon @click="save">
-          <v-icon>gif</v-icon>
-        </v-btn>
       </v-toolbar>
       <v-content>
         <v-container fluid fill-height>
@@ -191,6 +191,17 @@
         },
         set(v) {
           this.$router.push(`/${encodeURIComponent(v)}`);
+        },
+      },
+      gif: {
+        get() {
+          return this.$store.state.gif;
+        },
+        set(v) {
+          if (v) {
+            return this.$store.dispatch('generateGIF');
+          }
+          this.$store.commit('gif');
         },
       },
       speed: {
@@ -320,6 +331,23 @@
         set(v) {
           this.$store.commit('position/y', v);
         },
+      },
+      gifMode: {
+        get() {
+          return this.gif != null;
+        },
+        set(v) {
+          this.gif = v;
+        },
+      },
+      gifSize() {
+        if (this.gif.size > 1000000) {
+          return `${(this.gif.size / 1000000).toFixed(1)} MB`;
+        } else if (this.gif.size > 1000) {
+          return `${(this.gif.size / 1000).toFixed(1)} KB`;
+        } else {
+          return `${this.gif.size} B`;
+        }
       },
     },
     methods: {
