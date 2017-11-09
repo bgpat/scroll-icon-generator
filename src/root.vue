@@ -6,7 +6,7 @@
     </v-tooltip>
     <v-tooltip top v-if="gif">
       <img :src="gifURL" slot="activator" />
-      <span>GIF animation</span>
+      <span>Animation GIF</span>
     </v-tooltip>
   </div>
 </template>
