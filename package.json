@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "vuetify": "^1.0.19"
+    "vuetify": "^2.1.10"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
