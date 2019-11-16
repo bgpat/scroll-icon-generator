@@ -151,3 +151,18 @@
     </v-card>
   </v-navigation-drawer>
 </template>
+
+<script>
+export default {
+  computed: {
+    drawer: {
+      get() {
+        return this.$store.state.drawer;
+      },
+      set(v) {
+        this.$store.commit('drawer', v);
+      },
+    },
+  },
+};
+</script>
