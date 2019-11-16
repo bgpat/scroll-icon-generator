@@ -60,6 +60,9 @@ export default new Vuex.Store({
     canvas(state, v) {
       state.canvas = v;
     },
+    drawer(state, v) {
+      state.drawer = v;
+    },
   },
   actions: {
     generateGIF() {

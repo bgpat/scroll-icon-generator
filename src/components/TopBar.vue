@@ -1,6 +1,7 @@
 <template>
   <v-app-bar app color="primary" dark>
     <div class="d-flex align-center">
+      <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
@@ -34,5 +35,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toggleDrawer() {
+      this.$store.commit('drawer', !this.$store.state.drawer);
+    },
+  },
+};
 </script>
