@@ -1,9 +1,9 @@
 <template>
   <MenuGroup name="preview">
-      <v-switch
-        :label="gif ? `GIF (${gifSize})` : 'canvas + JS'"
-        v-model="gifMode"
-      ></v-switch>
+    <v-switch
+      :label="gif ? `GIF (${gifSize})` : 'canvas + JS'"
+      v-model="gifMode"
+    />
   </MenuGroup>
 </template>
 
