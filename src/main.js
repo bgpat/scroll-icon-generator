@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import vuetify from './plugins/vuetify';
-import Router from './Router.vue';
+import Router from './Router';
 import routes from './routes';
 
 Vue.use(VueRouter);
