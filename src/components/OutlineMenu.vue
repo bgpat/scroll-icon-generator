@@ -18,9 +18,29 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MenuGroup from './MenuGroup';
 
 export default {
   components: {MenuGroup},
+  computed: {
+    outlineWidth: {
+      get() {
+        return this.$store.state.outline.width;
+      },
+      set(v) {
+        this.$store.commit('outline/width', v);
+      },
+    },
+    outlineColor: {
+      get() {
+        return this.$store.state.outline.color;
+      },
+      set(v) {
+        this.$store.commit('outline/color', v);
+      },
+    },
+    ...mapState(['fontSize']),
+  },
 }
 </script>

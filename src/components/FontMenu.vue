@@ -38,9 +38,53 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MenuGroup from './MenuGroup';
 
 export default {
   components: {MenuGroup},
+  computed: {
+    fontFamily: {
+      get() {
+        return this.$store.state.font.family;
+      },
+      set(v) {
+        this.$store.commit('font/family', v);
+      },
+    },
+    fontSize: {
+      get() {
+        return this.$store.state.font.size;
+      },
+      set(v) {
+        this.$store.commit('font/size', v);
+      },
+    },
+    fontWeight: {
+      get() {
+        return this.$store.state.font.weight;
+      },
+      set(v) {
+        this.$store.commit('font/weight', v);
+      },
+    },
+    fontStyle: {
+      get() {
+        return this.$store.state.font.style;
+      },
+      set(v) {
+        this.$store.commit('font/style', v);
+      },
+    },
+    fontColor: {
+      get() {
+        return this.$store.state.font.color;
+      },
+      set(v) {
+        this.$store.commit('font/color', v);
+      },
+    },
+    ...mapState(['width', 'height']),
+  },
 }
 </script>

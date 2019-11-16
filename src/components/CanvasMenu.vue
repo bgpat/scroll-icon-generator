@@ -36,5 +36,39 @@ import MenuGroup from './MenuGroup';
 
 export default {
   components: {MenuGroup},
+  computed: {
+    width: {
+      get() {
+        return this.$store.state.width;
+      },
+      set(v) {
+        this.$store.commit('width', v);
+      },
+    },
+    height: {
+      get() {
+        return this.$store.state.height;
+      },
+      set(v) {
+        this.$store.commit('height', v);
+      },
+    },
+    background: {
+      get() {
+        return this.$store.state.background;
+      },
+      set(v) {
+        this.$store.commit('background', v);
+      },
+    },
+    transparent: {
+      get() {
+        return this.$store.state.transparent;
+      },
+      set(v) {
+        this.$store.commit('transparent', v);
+      },
+    },
+  },
 }
 </script>

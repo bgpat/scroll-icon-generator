@@ -22,9 +22,29 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MenuGroup from './MenuGroup';
 
 export default {
   components: {MenuGroup},
+  computed: {
+    xPosition: {
+      get() {
+        return this.$store.state.position.x;
+      },
+      set(v) {
+        this.$store.commit('position/x', v);
+      },
+    },
+    yPosition: {
+      get() {
+        return this.$store.state.position.y;
+      },
+      set(v) {
+        this.$store.commit('position/y', v);
+      },
+    },
+    ...mapState(['width', 'height']),
+  },
 }
 </script>

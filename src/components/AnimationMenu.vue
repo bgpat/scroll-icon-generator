@@ -25,9 +25,37 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MenuGroup from './MenuGroup';
 
 export default {
   components: {MenuGroup},
+  computed: {
+    speed: {
+      get() {
+        return this.$store.state.speed;
+      },
+      set(v) {
+        this.$store.commit('speed', v);
+      },
+    },
+    fps: {
+      get() {
+        return this.$store.state.fps;
+      },
+      set(v) {
+        this.$store.commit('fps', v);
+      },
+    },
+    spacer: {
+      get() {
+        return this.$store.state.spacer;
+      },
+      set(v) {
+        this.$store.commit('spacer', v);
+      },
+    },
+    ...mapState(['width', 'height']),
+  },
 }
 </script>
