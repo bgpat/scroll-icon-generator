@@ -1,6 +1,7 @@
 <template>
   <MenuGroup name="preview">
     <v-switch
+      prepend-icon="image"
       :label="gif ? `GIF (${gifSize})` : 'canvas + JS'"
       v-model="gifMode"
     />
