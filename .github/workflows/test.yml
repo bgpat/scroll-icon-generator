@@ -1,8 +1,5 @@
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches:
-    - master
+name: Build & Lint
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,9 +16,5 @@ jobs:
       run: npm install
     - name: Build
       run: npm run build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./dist
+    - name: Lint
+      run: npm run lint
