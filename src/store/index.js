@@ -23,7 +23,21 @@ export default new Vuex.Store({
     background: '#FF00FF',
     transparent: true,
     canvas: null,
-    drawer: true,
+    drawer: null,
+  },
+  getters: {
+    isMobile(state) {
+      return state.drawer && state.drawer.isMobile;
+    },
+    isDrawerOpened(state) {
+      return state.drawer && state.drawer.opened;
+    },
+    gifURL(state) {
+      if (state.gif == null) {
+        return null;
+      }
+      return window.URL.createObjectURL(state.gif);
+    },
   },
   mutations: {
     gif(state, v) {
@@ -67,6 +81,9 @@ export default new Vuex.Store({
   actions: {
     generateGIF() {
       this.state.canvas.save();
+    },
+    toggleDrawer() {
+      this.state.drawer.opened ^= true;
     },
   },
 });

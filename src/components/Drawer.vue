@@ -1,5 +1,13 @@
 <template>
-  <v-navigation-drawer v-model="drawer" persistent clipped app width="320">
+  <v-navigation-drawer
+    v-model="opened"
+    persistent
+    clipped
+    app
+    :width="size"
+    :mobile-break-point="minWidth"
+    ref="drawer"
+  >
     <PreviewMenu />
     <AnimationMenu />
     <CanvasMenu />
@@ -10,6 +18,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PreviewMenu from './PreviewMenu';
 import AnimationMenu from './AnimationMenu';
 import CanvasMenu from './CanvasMenu';
@@ -27,14 +36,20 @@ export default {
     PositionMenu,
   },
   computed: {
-    drawer: {
-      get() {
-        return this.$store.state.drawer;
-      },
-      set(v) {
-        this.$store.commit('drawer', v);
-      },
+    minWidth() {
+      return this.width + this.size;
     },
+    isMobile() {
+      return this.$refs.drawer.isMobile;
+    },
+    ...mapState(['width']),
+  },
+  data: () => ({
+    opened: true,
+    size: 320,
+  }),
+  mounted() {
+    this.$store.commit('drawer', this);
   },
 };
 </script>

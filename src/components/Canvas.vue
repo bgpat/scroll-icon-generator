@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import GIF from 'gif.js';
 import '!!file-loader?name=gif.worker.js!gif.js/dist/gif.worker';
 
@@ -69,9 +69,6 @@ export default {
         `"${this.font.family}"`,
       ].join(' ');
     },
-    gifURL() {
-      return window.URL.createObjectURL(this.gif);
-    },
     ...mapState([
       'gif',
       'speed',
@@ -85,6 +82,7 @@ export default {
       'outline',
       'position',
     ]),
+    ...mapGetters(['gifURL']),
   },
   methods: {
     clear() {
