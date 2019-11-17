@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" persistent clipped app width="400">
+  <v-navigation-drawer v-model="drawer" persistent clipped app width="320">
     <PreviewMenu />
     <AnimationMenu />
     <CanvasMenu />
