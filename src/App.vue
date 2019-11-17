@@ -3,7 +3,7 @@
     <TopBar />
     <Drawer />
     <v-content>
-      <HelloWorld />
+      <Canvas />
     </v-content>
   </v-app>
 </template>
@@ -11,19 +11,14 @@
 <script>
 import TopBar from './components/TopBar';
 import Drawer from './components/Drawer';
-import HelloWorld from './components/HelloWorld';
+import Canvas from './components/Canvas';
 
 export default {
   name: 'App',
-
   components: {
     TopBar,
     Drawer,
-    HelloWorld,
+    Canvas,
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
