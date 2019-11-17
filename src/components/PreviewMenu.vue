@@ -2,7 +2,7 @@
   <MenuGroup name="preview">
     <v-switch
       prepend-icon="image"
-      :label="gif ? `GIF (${gifSize})` : 'canvas + JS'"
+      :label="gif ? `GIF (${gifSize})` : 'Canvas + JavaScript'"
       v-model="gifMode"
       color="primary"
     />

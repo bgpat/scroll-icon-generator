@@ -3,7 +3,11 @@
     <TopBar />
     <Drawer />
     <v-content>
-      <Canvas />
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <Canvas />
+        </v-layout>
+      </v-container>
     </v-content>
   </v-app>
 </template>

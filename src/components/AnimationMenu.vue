@@ -14,7 +14,7 @@
       label="fps"
       thumb-label
       min="1"
-      max="100"
+      max="60"
     />
     <v-text-field prepend-icon="space_bar" v-model="spacer" label="spacer" />
   </MenuGroup>
