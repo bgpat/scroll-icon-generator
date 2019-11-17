@@ -1,13 +1,10 @@
 <template>
   <MenuGroup name="font">
-    <v-text-field
-      prepend-icon="font_download"
-      v-model="fontFamily"
-    />
+    <v-text-field prepend-icon="font_download" v-model="fontFamily" />
     <v-slider
       prepend-icon="format_size"
       v-model="fontSize"
-      hint="size (px)"
+      label="size"
       thumb-label
       min="4"
       :max="height * 2"
@@ -15,7 +12,7 @@
     <v-slider
       prepend-icon="format_bold"
       v-model="fontWeight"
-      hint="weight"
+      label="weight"
       thumb-label
       min="100"
       max="900"
@@ -25,24 +22,24 @@
     <v-select
       prepend-icon="format_italic"
       v-model="fontStyle"
-      hint="style"
+      label="style"
       :items="['normal', 'italic', 'oblique']"
     />
-    <v-text-field
+    <ColorPicker
       prepend-icon="format_color_text"
       v-model="fontColor"
       label="text color"
-      :style="{ color: fontColor }"
     />
   </MenuGroup>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import MenuGroup from './MenuGroup';
+import ColorPicker from './ColorPicker';
 
 export default {
-  components: {MenuGroup},
+  components: { MenuGroup, ColorPicker },
   computed: {
     fontFamily: {
       get() {
@@ -86,5 +83,5 @@ export default {
     },
     ...mapState(['width', 'height']),
   },
-}
+};
 </script>

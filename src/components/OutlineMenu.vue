@@ -1,28 +1,29 @@
 <template>
   <MenuGroup name="outline">
     <v-slider
-      prepend-icon="format_bold"
+      prepend-icon="line_weight"
       v-model="outlineWidth"
-      hint="width"
+      label="weight"
       thumb-label
       min="0"
       :max="fontSize"
     />
-    <v-text-field
-      prepend-icon="format_color_text"
+    <ColorPicker
+      prepend-icon="border_color"
       v-model="outlineColor"
       label="color"
-      :style="{ color: outlineColor }"
+      dark
     />
   </MenuGroup>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import MenuGroup from './MenuGroup';
+import ColorPicker from './ColorPicker';
 
 export default {
-  components: {MenuGroup},
+  components: { MenuGroup, ColorPicker },
   computed: {
     outlineWidth: {
       get() {
@@ -42,5 +43,5 @@ export default {
     },
     ...mapState(['fontSize']),
   },
-}
+};
 </script>

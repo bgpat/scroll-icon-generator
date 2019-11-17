@@ -20,7 +20,7 @@ export default new Vuex.Store({
     width: 32,
     height: 32,
     spacer: '  ',
-    background: '#ff00ff',
+    background: '#FF00FF',
     transparent: true,
     canvas: null,
     drawer: true,

@@ -1,9 +1,9 @@
 <template>
   <MenuGroup name="animation">
     <v-slider
-      prepend-icon="tune"
+      prepend-icon="speed"
       v-model="speed"
-      hint="speed (px/sec)"
+      label="speed"
       thumb-label
       min="0"
       :max="width * 5"
@@ -11,25 +11,21 @@
     <v-slider
       prepend-icon="filter"
       v-model="fps"
-      hint="FPS"
+      label="fps"
       thumb-label
       min="1"
       max="100"
     />
-    <v-text-field
-      prepend-icon="space_bar"
-      v-model="spacer"
-      label="spacer"
-    />
+    <v-text-field prepend-icon="space_bar" v-model="spacer" label="spacer" />
   </MenuGroup>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import MenuGroup from './MenuGroup';
 
 export default {
-  components: {MenuGroup},
+  components: { MenuGroup },
   computed: {
     speed: {
       get() {
@@ -57,5 +53,5 @@ export default {
     },
     ...mapState(['width', 'height']),
   },
-}
+};
 </script>

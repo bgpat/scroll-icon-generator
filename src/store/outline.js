@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: {
     width: 3,
-    color: '#ffffff',
+    color: '#FFFFFF',
   },
   mutations: {
     width(state, v) {

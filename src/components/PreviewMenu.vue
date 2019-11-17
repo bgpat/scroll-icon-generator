@@ -4,6 +4,7 @@
       prepend-icon="image"
       :label="gif ? `GIF (${gifSize})` : 'canvas + JS'"
       v-model="gifMode"
+      color="primary"
     />
   </MenuGroup>
 </template>
@@ -12,8 +13,8 @@
 import MenuGroup from './MenuGroup';
 
 export default {
-  components: {MenuGroup},
-  computed:{
+  components: { MenuGroup },
+  computed: {
     gif: {
       get() {
         return this.$store.state.gif;
@@ -43,5 +44,5 @@ export default {
       }
     },
   },
-}
+};
 </script>
