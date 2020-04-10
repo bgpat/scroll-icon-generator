@@ -5,8 +5,8 @@ export default [
   {
     path: '/',
     redirect(to) {
-      if (to.hash !== '') {
-        return { path: `/${to.hash.slice(1)}`, hash: '' };
+      if (/^\/\?/.test(to.fullPath)) {
+        return { path: to.fullPath.replace(/^\/\?/, '/'), query: null };
       }
       return `/${encodeURIComponent(config.defaultText)}`;
     },
