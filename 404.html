@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <title>redirecting...</title>
     <script type="text/javascript">
-      window.location.replace('https://icon.401.jp/');
+      window.location.replace(
+        'https://icon.401.jp/#' + window.location.pathname.slice(1),
+      );
     </script>
   </head>
   <body></body>
