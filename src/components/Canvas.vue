@@ -106,6 +106,7 @@ export default {
       ctx.strokeStyle = this.outline.color;
       ctx.lineWidth = this.outline.width;
       ctx.fillStyle = this.font.color;
+      ctx.lineJoin = 'round';
       let txt = this.text;
       for (let i = 0; i < this.width / this.size(); i++) {
         txt += this.text;
