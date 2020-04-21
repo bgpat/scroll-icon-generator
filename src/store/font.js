@@ -5,7 +5,7 @@ export default {
     size: 24, // px
     weight: 400,
     style: 'normal',
-    color: '#000000',
+    color: '#ffffff',
   },
   mutations: {
     family(state, v) {
