@@ -25,7 +25,7 @@
     "gif.js": "^0.2.0",
     "material-design-icons-iconfont": "^5.0.1",
     "node-sass": "^4.14.1",
-    "sass": "^1.26.5",
+    "sass": "^1.26.7",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-vuetify": "^2.0.5",
     "vue-router": "^3.3.1",
