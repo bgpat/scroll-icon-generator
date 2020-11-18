@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.7.0",
     "vue": "^2.6.12",
-    "vuetify": "^2.3.17"
+    "vuetify": "^2.3.18"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.2",
