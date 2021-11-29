@@ -13,7 +13,7 @@
     "vuetify": "2.6.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "1.12.1",
+    "@nuxtjs/vuetify": "1.12.2",
     "@vue/cli-plugin-babel": "4.5.15",
     "@vue/cli-plugin-eslint": "4.5.15",
     "@vue/cli-service": "4.5.15",
