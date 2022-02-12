@@ -10,7 +10,6 @@ module.exports = {
           options: {
             implementation: require('sass'),
             sassOptions: {
-              fiber: require('fibers'),
               indentedSyntax: true, // optional
             },
           },
