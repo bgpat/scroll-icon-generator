@@ -1,25 +1,22 @@
 <template>
   <div class="imgbox" :style="`width:${width + 2}px;height:${height + 2}px`">
     <div v-show="gif == null && !pause">
-      <v-tooltip top>
-        <template v-slot:activator="{ on }">
+      <v-tooltip text="HTML5 Canvas + JavaScript" location="top">
+        <template #activator="{ props }">
           <canvas
-            slot="activator"
+            v-bind="props"
             ref="canvas"
             :width="width"
             :height="height"
-            v-on="on"
           ></canvas>
         </template>
-        <span>HTML5 Canvas + JavaScript</span>
       </v-tooltip>
     </div>
     <div v-if="gif">
-      <v-tooltip top>
-        <template v-slot:activator="{ on }">
-          <img slot="activator" :src="gifURL" :class="[pause]" v-on="on" />
+      <v-tooltip text="Animation GIF" location="top">
+        <template #activator="{ props }">
+          <img v-bind="props" :src="gifURL" :class="{ pause }" />
         </template>
-        <span>Animation GIF</span>
       </v-tooltip>
     </div>
     <transition name="circular">
@@ -36,7 +33,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
 import GIF from 'gif.js';
-import '!!file-loader?name=gif.worker.js!gif.js/dist/gif.worker';
+import workerUrl from 'gif.js/dist/gif.worker.js?url';
 
 export default {
   data() {
@@ -141,6 +138,8 @@ export default {
         16,
       );
       let gif = new GIF({
+        workers: 2,
+        workerScript: workerUrl,
         width: this.width,
         height: this.height,
         transparent: this.transparent ? bg & 0xffffff : null,
@@ -167,7 +166,7 @@ export default {
           copy: true,
         });
       }
-      gif.on('finished', blob => {
+      gif.on('finished', (blob) => {
         this.pause = false;
         this.animate();
         this.$store.commit('gif', blob);
@@ -213,11 +212,11 @@ export default {
   transition: opacity 0.5s;
 }
 
-.circular-reave-active {
+.circular-leave-active {
   transition: opacity 3s;
 }
 
-.circular-enter,
+.circular-enter-from,
 .circular-leave-to {
   opacity: 0;
 }

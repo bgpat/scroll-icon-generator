@@ -1,5 +1,5 @@
-import App from './App';
-import config from './config';
+import App from './App.vue';
+import config from './config.js';
 
 export default [
   {

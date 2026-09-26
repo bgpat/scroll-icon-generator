@@ -22,7 +22,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import MenuGroup from './MenuGroup';
+import MenuGroup from './MenuGroup.vue';
 
 export default {
   components: { MenuGroup },

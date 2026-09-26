@@ -2,60 +2,36 @@
   "name": "scroll-icon-generator",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vite",
+    "build": "vite build",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "core-js": "3.50.0",
-    "vue": "2.7.16",
-    "vuetify": "2.6.10"
-  },
-  "devDependencies": {
-    "@babel/eslint-parser": "7.29.9",
-    "@nuxtjs/vuetify": "1.12.3",
-    "@vue/cli-plugin-babel": "5.0.9",
-    "@vue/cli-plugin-eslint": "5.0.9",
-    "@vue/cli-service": "5.0.9",
-    "deepmerge": "4.3.1",
-    "eslint": "7.32.0",
-    "eslint-plugin-vue": "8.7.1",
     "gif.js": "0.2.0",
     "material-design-icons-iconfont": "6.7.0",
+    "vue": "3.5.43",
+    "vue-router": "5.3.1",
+    "vuetify": "3.10.12",
+    "vuex": "4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@vitejs/plugin-vue": "6.0.9",
+    "eslint": "10.11.0",
+    "eslint-plugin-vue": "10.11.1",
+    "globals": "17.12.0",
     "sass": "1.105.0",
-    "sass-loader": "17.0.1",
-    "vue-cli-plugin-vuetify": "2.5.8",
-    "vue-router": "3.6.5",
-    "vue-template-compiler": "2.7.16",
-    "vuetify-loader": "1.9.2",
-    "vuex": "3.6.2"
+    "vite": "8.3.1",
+    "vite-plugin-vuetify": "2.1.3",
+    "vue-eslint-parser": "10.4.1"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "@babel/eslint-parser",
-      "requireConfigFile": false
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+  "overrides": {
+    "ejs": "3.1.10"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "overrides": {
-    "json5": "2.2.3"
-  }
+  ]
 }

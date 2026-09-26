@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import MenuGroup from './MenuGroup';
+import { mapState } from 'vuex';
+import MenuGroup from './MenuGroup.vue';
 
 export default {
-  components: {MenuGroup},
+  components: { MenuGroup },
   computed: {
     xPosition: {
       get() {
@@ -46,5 +46,5 @@ export default {
     },
     ...mapState(['width', 'height']),
   },
-}
+};
 </script>

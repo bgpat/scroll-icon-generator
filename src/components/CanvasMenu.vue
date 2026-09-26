@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import MenuGroup from './MenuGroup';
-import ColorPicker from './ColorPicker';
+import MenuGroup from './MenuGroup.vue';
+import ColorPicker from './ColorPicker.vue';
 
 export default {
   components: { MenuGroup, ColorPicker },

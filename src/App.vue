@@ -2,20 +2,20 @@
   <v-app>
     <TopBar />
     <AppDrawer />
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center align-center>
+    <v-main>
+      <v-container fluid class="fill-height">
+        <div class="d-flex justify-center align-center fill-height w-100">
           <IconCanvas />
-        </v-layout>
+        </div>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import TopBar from './components/TopBar';
-import AppDrawer from './components/AppDrawer';
-import IconCanvas from './components/IconCanvas';
+import TopBar from './components/TopBar.vue';
+import AppDrawer from './components/AppDrawer.vue';
+import IconCanvas from './components/IconCanvas.vue';
 
 export default {
   name: 'App',
