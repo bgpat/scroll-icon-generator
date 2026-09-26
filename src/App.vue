@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <TopBar />
-    <Drawer />
+    <AppDrawer />
     <v-content>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
-          <Canvas />
+          <IconCanvas />
         </v-layout>
       </v-container>
     </v-content>
@@ -14,15 +14,15 @@
 
 <script>
 import TopBar from './components/TopBar';
-import Drawer from './components/Drawer';
-import Canvas from './components/Canvas';
+import AppDrawer from './components/AppDrawer';
+import IconCanvas from './components/IconCanvas';
 
 export default {
   name: 'App',
   components: {
     TopBar,
-    Drawer,
-    Canvas,
+    AppDrawer,
+    IconCanvas,
   },
 };
 </script>
