@@ -5,18 +5,7 @@
   ],
   "platformAutomerge": true,
   "automergeType": "pr",
-  "packageRules": [
-    {
-      "description": "Enable GitHub auto-merge for patch and minor updates",
-      "matchUpdateTypes": ["patch", "minor", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "description": "Do not auto-merge major upgrades (manual review)",
-      "matchUpdateTypes": ["major"],
-      "automerge": false
-    }
-  ],
+  "automerge": true,
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
