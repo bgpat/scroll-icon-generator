@@ -9,40 +9,5 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
-  },
-  "packageRules": [
-    {
-      "description": "Keep vue and vue-template-compiler on matching Vue 2 versions",
-      "matchPackageNames": [
-        "vue",
-        "vue-template-compiler"
-      ],
-      "groupName": "vue2"
-    },
-    {
-      "description": "App remains on Vue 2 / Vuetify 2; ignore Vue 3 ecosystem majors",
-      "matchPackageNames": [
-        "vue",
-        "vue-template-compiler",
-        "vuetify",
-        "vue-router",
-        "vuex"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "enabled": false
-    },
-    {
-      "description": "Vue CLI 5 stack is not ready for ESLint 10 / eslint-plugin-vue 10",
-      "matchPackageNames": [
-        "eslint",
-        "eslint-plugin-vue"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "enabled": false
-    }
-  ]
+  }
 }
