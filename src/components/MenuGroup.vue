@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-subheader>{{name}}</v-subheader>
+    <v-list-subheader>{{ name }}</v-list-subheader>
     <v-card-text>
       <slot></slot>
     </v-card-text>
