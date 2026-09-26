@@ -1,6 +1,10 @@
 <template>
-  <v-app-bar app color="primary" dark clipped-left fixed>
-    <v-btn icon v-if="!isMobile && isDrawerOpened" @click.stop="toggleDrawer">
+  <v-app-bar color="primary" density="comfortable" clipped-left>
+    <v-btn
+      icon
+      v-if="!isMobile && isDrawerOpened"
+      @click.stop="toggleDrawer"
+    >
       <v-icon>chevron_left</v-icon>
     </v-btn>
     <v-app-bar-nav-icon
@@ -9,36 +13,33 @@
     />
     <v-text-field
       single-line
-      dense
+      density="compact"
       hide-details
       prepend-icon="mode_edit"
       v-model="text"
+      class="mx-2"
     />
-    <v-menu bottom left>
-      <template v-slot:activator="{ on }">
-        <v-btn dark icon v-on="on">
-          <v-icon>mdi-dots-vertical</v-icon>
+    <v-menu location="bottom end">
+      <template #activator="{ props }">
+        <v-btn icon v-bind="props">
+          <v-icon>more_vert</v-icon>
         </v-btn>
       </template>
       <v-list>
         <v-list-item :href="gifURL" target="_blank">
-          <v-list-item-icon>
-            <v-icon>mdi-open-in-new</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            Open generated icon in new window
-          </v-list-item-content>
+          <template #prepend>
+            <v-icon>open_in_new</v-icon>
+          </template>
+          <v-list-item-title>Open generated icon in new window</v-list-item-title>
         </v-list-item>
         <v-list-item
           href="https://github.com/bgpat/scroll-icon-generator"
           target="_blank"
         >
-          <v-list-item-icon>
-            <v-icon>mdi-github-circle</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            View on GitHub
-          </v-list-item-content>
+          <template #prepend>
+            <v-icon>code</v-icon>
+          </template>
+          <v-list-item-title>View on GitHub</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -46,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -59,7 +60,6 @@ export default {
         this.$router.push(`/${encodeURIComponent(v)}`);
       },
     },
-    ...mapState(['gif', 'drawer']),
     ...mapGetters(['isMobile', 'isDrawerOpened', 'gifURL']),
   },
   methods: mapActions(['toggleDrawer']),

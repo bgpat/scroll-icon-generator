@@ -1,19 +1,7 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createApp } from 'vue';
 import vuetify from './plugins/vuetify';
-import AppRouter from './AppRouter';
-import routes from './routes';
+import AppRouter from './AppRouter.vue';
+import router from './router';
 import store from './store';
 
-Vue.use(VueRouter);
-Vue.config.productionTip = false;
-
-new Vue({
-  vuetify,
-  store,
-  render: h => h(AppRouter),
-  router: new VueRouter({
-    mode: 'history',
-    routes,
-  }),
-}).$mount('#app');
+createApp(AppRouter).use(vuetify).use(store).use(router).mount('#app');

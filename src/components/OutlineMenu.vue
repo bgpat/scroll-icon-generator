@@ -12,15 +12,13 @@
       prepend-icon="border_color"
       v-model="outlineColor"
       label="color"
-      dark
     />
   </MenuGroup>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import MenuGroup from './MenuGroup';
-import ColorPicker from './ColorPicker';
+import MenuGroup from './MenuGroup.vue';
+import ColorPicker from './ColorPicker.vue';
 
 export default {
   components: { MenuGroup, ColorPicker },
@@ -41,7 +39,9 @@ export default {
         this.$store.commit('outline/color', v);
       },
     },
-    ...mapState(['fontSize']),
+    fontSize() {
+      return this.$store.state.font.size;
+    },
   },
 };
 </script>

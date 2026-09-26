@@ -1,11 +1,9 @@
 <template>
   <v-navigation-drawer
     v-model="opened"
-    persistent
     clipped
-    app
     :width="size"
-    :mobile-break-point="minWidth"
+    :mobile-breakpoint="minWidth"
     ref="drawer"
   >
     <PreviewMenu />
@@ -19,12 +17,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import PreviewMenu from './PreviewMenu';
-import AnimationMenu from './AnimationMenu';
-import CanvasMenu from './CanvasMenu';
-import FontMenu from './FontMenu';
-import OutlineMenu from './OutlineMenu';
-import PositionMenu from './PositionMenu';
+import PreviewMenu from './PreviewMenu.vue';
+import AnimationMenu from './AnimationMenu.vue';
+import CanvasMenu from './CanvasMenu.vue';
+import FontMenu from './FontMenu.vue';
+import OutlineMenu from './OutlineMenu.vue';
+import PositionMenu from './PositionMenu.vue';
 
 export default {
   components: {
@@ -40,7 +38,7 @@ export default {
       return this.width + this.size;
     },
     isMobile() {
-      return this.$refs.drawer.isMobile;
+      return this.$vuetify.display.width < this.minWidth;
     },
     ...mapState(['width']),
   },

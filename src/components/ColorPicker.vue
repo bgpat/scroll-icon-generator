@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-text-field v-model="color" :label="label" @focus="open">
-      <template v-slot:prepend>
+      <template #prepend>
         <v-icon :color="color">{{ prependIcon }}</v-icon>
       </template>
     </v-text-field>
@@ -13,14 +13,16 @@
 
 <script>
 export default {
-  props: ['prependIcon', 'value', 'label'],
+  props: ['prependIcon', 'modelValue', 'label'],
+  emits: ['update:modelValue'],
   computed: {
     color: {
       get() {
-        return this.value;
+        return this.modelValue;
       },
       set(v) {
-        this.$emit('input', v);
+        const value = typeof v === 'object' && v !== null ? v.hexa || v.hex : v;
+        this.$emit('update:modelValue', value);
       },
     },
   },

@@ -17,7 +17,6 @@
       min="100"
       max="900"
       step="100"
-      snap
     />
     <v-select
       prepend-icon="format_italic"
@@ -35,8 +34,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import MenuGroup from './MenuGroup';
-import ColorPicker from './ColorPicker';
+import MenuGroup from './MenuGroup.vue';
+import ColorPicker from './ColorPicker.vue';
 
 export default {
   components: { MenuGroup, ColorPicker },
