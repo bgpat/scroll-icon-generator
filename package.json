@@ -19,7 +19,7 @@
     "@vue/cli-plugin-eslint": "5.0.9",
     "@vue/cli-service": "5.0.9",
     "deepmerge": "4.3.1",
-    "eslint": "7.32.0",
+    "eslint": "10.11.0",
     "eslint-plugin-vue": "8.7.1",
     "gif.js": "0.2.0",
     "material-design-icons-iconfont": "6.7.0",
