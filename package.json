@@ -28,7 +28,7 @@
     "vue-eslint-parser": "10.4.1"
   },
   "overrides": {
-    "ejs": "6.0.1"
+    "ejs": "7.0.1"
   },
   "browserslist": [
     "> 1%",
